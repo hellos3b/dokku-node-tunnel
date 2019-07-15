@@ -2,7 +2,7 @@
   "name": "dokku-node-tunnel",
   "version": "0.0.1",
   "description": "Dokku Tunnel",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rm -r ./dist; babel -d ./dist ./src",
     "babel-node": "babel-node ./src/index.js",
