@@ -3,7 +3,13 @@
 import Client from './client/Client'
 import Server from './server/Server'
 
+console.log("Client", Client)
+
 export default {
-  Client,
-  Server
+  start(options) {
+    Server.start(options)
+  },
+  connect(options) {
+    Client.open(options)
+  }
 }

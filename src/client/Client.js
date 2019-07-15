@@ -90,4 +90,4 @@ let Tunnel = {
 
 Object.setPrototypeOf(Tunnel, EventEmitter.prototype)
 
-module.exports = Tunnel
+export default Tunnel

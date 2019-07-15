@@ -1,5 +1,10 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
 var _socket = _interopRequireDefault(require("socket.io-client"));
 
 var _axios = _interopRequireDefault(require("axios"));
@@ -88,4 +93,5 @@ var Tunnel = {
   }
 };
 Object.setPrototypeOf(Tunnel, _events.EventEmitter.prototype);
-module.exports = Tunnel;
+var _default = Tunnel;
+exports["default"] = _default;
