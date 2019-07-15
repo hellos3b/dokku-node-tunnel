@@ -3,19 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "Client", {
-  enumerable: true,
-  get: function get() {
-    return _Client.Client;
-  }
-});
-Object.defineProperty(exports, "Server", {
-  enumerable: true,
-  get: function get() {
-    return _Server.Server;
-  }
-});
+exports["default"] = void 0;
 
-var _Client = require("./client/Client");
+var _Client = _interopRequireDefault(require("./client/Client"));
 
-var _Server = require("./server/Server");
+var _Server = _interopRequireDefault(require("./server/Server"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+// export {Server} from './server/Server'
+var _default = {
+  Client: _Client["default"],
+  Server: _Server["default"]
+};
+exports["default"] = _default;
