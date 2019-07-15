@@ -18,8 +18,7 @@ const connectStates = {
 let Tunnel = {
   open({
     remoteProxyUrl="",
-    baseUrl="http://localhost",
-    port=3000
+    baseUrl="http://localhost:3000"
   }) {
     log(chalk.gray("Connecting to DPM Tunnel"))
 
@@ -33,7 +32,7 @@ let Tunnel = {
 
     tunnel.on("connect", () => {
       connectState = connectStates.CONNECTED
-      
+
       log(`${chalk.green("\u2714")} Connected to Tunnel`)
     })
 
@@ -53,7 +52,7 @@ let Tunnel = {
 
       axios({
         method: "GET",
-        baseURL: `${baseUrl}:${port}`,
+        baseURL: baseUrl,
         url: data.url,
         responseType: "stream"
       })
