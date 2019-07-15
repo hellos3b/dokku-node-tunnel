@@ -29,9 +29,7 @@ var Tunnel = {
     var _ref$remoteProxyUrl = _ref.remoteProxyUrl,
         remoteProxyUrl = _ref$remoteProxyUrl === void 0 ? "" : _ref$remoteProxyUrl,
         _ref$baseUrl = _ref.baseUrl,
-        baseUrl = _ref$baseUrl === void 0 ? "http://localhost" : _ref$baseUrl,
-        _ref$port = _ref.port,
-        port = _ref$port === void 0 ? 3000 : _ref$port;
+        baseUrl = _ref$baseUrl === void 0 ? "http://localhost:3000" : _ref$baseUrl;
     log(_chalk["default"].gray("Connecting to DPM Tunnel")); // ( This is to remove logging spam when connection_error keeps firing from reconnecting )
     // Set connectState to error and it will stop printing out errors after the first one
 
@@ -59,7 +57,7 @@ var Tunnel = {
 
       (0, _axios["default"])({
         method: "GET",
-        baseURL: "".concat(baseUrl, ":").concat(port),
+        baseURL: baseUrl,
         url: data.url,
         responseType: "stream"
       }).then(function (response) {
