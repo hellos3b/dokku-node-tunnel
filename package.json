@@ -1,5 +1,5 @@
 {
-  "name": "dokku-tunnel",
+  "name": "dokku-node-tunnel",
   "version": "0.0.1",
   "description": "Dokku Tunnel",
   "main": "index.js",
@@ -9,9 +9,14 @@
     "dev": "nodemon --exec npm run babel-node",
     "start": "npm run build; NODE_ENV=production node dist/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hellos3b/dokku-node-tunnel.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.5.4",
     "axios": "^0.19.0",
     "chalk": "^2.4.1",
     "express": "^4.16.3",
@@ -22,9 +27,10 @@
     "socket.io-stream": "^0.9.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2017": "^6.24.1",
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.19.1"
   }
 }
