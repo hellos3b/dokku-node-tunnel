@@ -3,13 +3,5 @@
 import Client from './client/Client'
 import Server from './server/Server'
 
-console.log("Client", Client)
-
-export default {
-  start(options) {
-    Server.start(options)
-  },
-  connect(options) {
-    Client.open(options)
-  }
-}
+export const start = (options) => Server.start(options)
+export const connect = options => Client.open(options)

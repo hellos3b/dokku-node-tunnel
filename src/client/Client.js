@@ -37,7 +37,7 @@ let Tunnel = {
     })
 
     tunnel.on("request", data => {
-      log(chalk.gray(`${new Date().toISOString()} [GET] `), data.url)
+      log(chalk.gray(`${new Date().toISOString()} [GET] `), baseUrl+data.url)
 
       function responseStream(response) {
         const stream = ss.createStream()
@@ -61,6 +61,7 @@ let Tunnel = {
           response.data.pipe(stream)
         })
         .catch(error => {
+          console.log("GET error", error)
           const stream = responseStream({
             status: 404
           })

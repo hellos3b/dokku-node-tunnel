@@ -48,7 +48,7 @@ var Tunnel = {
       log("".concat(_chalk["default"].green("\u2714"), " Connected to Tunnel"));
     });
     tunnel.on("request", function (data) {
-      log(_chalk["default"].gray("".concat(new Date().toISOString(), " [GET] ")), data.url);
+      log(_chalk["default"].gray("".concat(new Date().toISOString(), " [GET] ")), baseUrl + data.url);
 
       function responseStream(response) {
         var stream = _socket2["default"].createStream();
@@ -69,6 +69,7 @@ var Tunnel = {
         var stream = responseStream(response);
         response.data.pipe(stream);
       })["catch"](function (error) {
+        console.log("GET error", error);
         var stream = responseStream({
           status: 404
         });
