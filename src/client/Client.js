@@ -1,12 +1,11 @@
 /**
  * Connects to DPM tunnel to expose localhost through a proxy
  */
-const io = require("socket.io-client")
-const axios = require("axios")
-const chalk = require("chalk")
-const ss = require("socket.io-stream")
-const EventEmitter = require("events").EventEmitter
-const config = require("./config")
+import io  from "socket.io-client"
+import axios from "axios"
+import chalk from "chalk"
+import ss from "socket.io-stream"
+import {EventEmitter} from "events"
 
 const log = console.log
 const logPrefix = chalk.magenta("[Tunnel]")
@@ -17,21 +16,25 @@ const connectStates = {
 }
 
 let Tunnel = {
-  open(options) {
+  open({
+    remoteProxyUrl="",
+    baseUrl="http://localhost",
+    port=3000
+  }) {
     log(chalk.gray("Connecting to DPM Tunnel"))
 
     // ( This is to remove logging spam when connection_error keeps firing from reconnecting )
     // Set connectState to error and it will stop printing out errors after the first one
     let connectState = connectStates.DEFAULT
-    const tunnel = (this.tunnel = io(`${config.remoteProxyUrl}`, {
+    const tunnel = (this.tunnel = io(`${remoteProxyUrl}`, {
       secure: true,
       rejectUnauthorized: false
     }).connect())
 
     tunnel.on("connect", () => {
       connectState = connectStates.CONNECTED
-      // Once socket is connected, send username and password to finalize
-      log(`${chalk.green("\u2714")} Connected to Tunnel with ID '${options.dpmId}'`)
+      
+      log(`${chalk.green("\u2714")} Connected to Tunnel`)
     })
 
     tunnel.on("request", data => {
@@ -50,7 +53,7 @@ let Tunnel = {
 
       axios({
         method: "GET",
-        baseURL: `http://localhost:${options.port}`,
+        baseURL: `${baseUrl}:${port}`,
         url: data.url,
         responseType: "stream"
       })
